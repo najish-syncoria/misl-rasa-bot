@@ -64,7 +64,8 @@ export const Buttons = ({ buttons, index, showBotAvatar, ts, callback }) => {
               onClick={async (e) => {
                 e.preventDefault();
                 if (callback) {
-                  const { title, payload } = item;
+                  const { title } = item;
+                  console.log(item);
                   dispatch(disableButtons(index));
                   dispatch(addMessage(createUserMessage(title)));
                   dispatch(toggleBotTyping(true));
@@ -72,7 +73,7 @@ export const Buttons = ({ buttons, index, showBotAvatar, ts, callback }) => {
                   dispatch(
                     fetchBotResponse({
                       rasaServerUrl,
-                      message: payload,
+                      message: title,
                       sender: userId,
                     })
                   );
